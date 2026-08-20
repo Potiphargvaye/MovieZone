@@ -1,34 +1,38 @@
-MovieZone 🎬
+🎬 MovieZone
 
-A movie streaming mobile application built with Expo and React Native.
+Welcome to MovieZone, a movie streaming mobile application built with React Native and Expo.
 
-This project was developed as an assignment provided by our facilitator at SovitAfric.
+This project was developed as part of an assignment provided by our facilitator at SovitAfric.
 
-Developer
+👨‍💻 Developer
 
 Potiphar Gaye Vaye
-Portfolio: potiphargvaye.gt.tc
 
-Get started
+🌐 Portfolio: potiphargvaye.gt.tc
+
+ Get started
 Install dependencies
 npm install
 Start the app
 npx expo start
 
-You can run the app using:
+In the output, you'll find options to open the app in:
 
 Development build
 Android emulator
 iOS simulator
-Expo Go
+Expo Go, a limited sandbox for trying out your app.
 
-Start developing by editing the files inside the app directory. This project uses Expo Router for file-based routing.
+You can start developing by editing the files inside the app directory. This project uses file-based routing.
 
-Learn more
-Expo Documentation
-Learn Expo Tutorial
-Assignment Credit
+ Learn more
 
-This project is based on an assignment provided by our facilitator at SovitAfric.
+To learn more about developing with Expo, check out:
+
+Expo Documentation — Learn fundamentals and explore guides.
+Learn Expo Tutorial — Build an app that runs on Android, iOS, and the web.
+🤝 Assignment Credit
+
+This project was developed as part of an assignment provided by our facilitator at SovitAfric.
 
 © 2026 Potiphar Gaye Vaye
