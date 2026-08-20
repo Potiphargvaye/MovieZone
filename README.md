@@ -1,16 +1,16 @@
-🎬 MovieZone
+## 🎬 MovieZone
 
 Welcome to MovieZone, a movie streaming mobile application built with React Native and Expo.
 
 This project was developed as part of an assignment provided by our facilitator at SovitAfric.
 
-👨‍💻 Developer
+## 👨‍💻 Developer
 
 Potiphar Gaye Vaye
 
 🌐 Portfolio: potiphargvaye.gt.tc
 
- Get started
+## Get started Get started
 Install dependencies
 npm install
 Start the app
@@ -35,4 +35,4 @@ Learn Expo Tutorial — Build an app that runs on Android, iOS, and the web.
 
 This project was developed as part of an assignment provided by our facilitator at SovitAfric.
 
-© 2026 Potiphar Gaye Vaye
+## © 2026 Potiphar Gaye Vaye
