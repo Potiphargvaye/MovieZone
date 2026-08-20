@@ -8,7 +8,8 @@ This project was developed as part of an assignment provided by our facilitator 
 
 Potiphar Gaye Vaye
 
-🌐 Portfolio: potiphargvaye.gt.tc
+
+🌐 Portfolio: https://potiphargvaye.gt.tc/
 
 ## Get started Get started
 Install dependencies
