@@ -1,68 +1,85 @@
-import { Ionicons } from '@expo/vector-icons';
-import { router } from 'expo-router';
-import { useState } from 'react';
+import { Ionicons } from "@expo/vector-icons";
+import { router } from "expo-router";
+import { useState } from "react";
 import {
+  ImageBackground,
   Pressable,
   ScrollView,
   StyleSheet,
   Text,
   View,
-} from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+} from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
-import { AppButton } from '@/components/AppButton';
-import { PosterCard } from '@/components/PosterCard';
-import { RatingBadge } from '@/components/RatingBadge';
-import { SectionHeader } from '@/components/SectionHeader';
-import { Colors, FontSize, Radius, Spacing } from '@/constants/theme';
-import { comingSoon, heroMovie, nowPlaying } from '@/data/movies';
+import { AppButton } from "@/components/AppButton";
+import { PosterCard } from "@/components/PosterCard";
+import { RatingBadge } from "@/components/RatingBadge";
+import { SectionHeader } from "@/components/SectionHeader";
+import { Colors, FontSize, Radius, Spacing } from "@/constants/theme";
+import { comingSoon, heroMovie, nowPlaying } from "@/data/movies";
 
-const MONTHS = ['All', 'January', 'February', 'March'];
+const MONTHS = ["All", "January", "February", "March"];
 
 export default function HomeScreen() {
-  const [activeMonth, setActiveMonth] = useState('January');
+  const [activeMonth, setActiveMonth] = useState("January");
 
   return (
-    <SafeAreaView style={styles.root} edges={['top']}>
-      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContent}>
+    <SafeAreaView style={styles.root} edges={["top"]}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.scrollContent}
+      >
         <View style={styles.header}>
           <Text style={styles.logo}>
             Movie<Text style={styles.logoAccent}>zone</Text>
           </Text>
           <Pressable hitSlop={10}>
-            <Ionicons name="notifications-outline" size={22} color={Colors.text} />
+            <Ionicons
+              name="notifications-outline"
+              size={22}
+              color={Colors.text}
+            />
           </Pressable>
         </View>
 
         <Pressable
           style={styles.hero}
-          onPress={() => router.push(`/movie/${heroMovie.id}`)}>
-          <View style={[styles.heroPoster, { backgroundColor: heroMovie.placeholderColor }]}>
-            <Ionicons
-              name="film-outline"
-              size={40}
-              color="rgba(0,0,0,0.35)"
-              style={styles.heroPlaceholderIcon}
-            />
+          onPress={() => router.push(`/movie/${heroMovie.id}`)}
+        >
+          <ImageBackground
+            source={heroMovie.backdrop ?? undefined}
+            style={[
+              styles.heroPoster,
+              { backgroundColor: heroMovie.placeholderColor },
+            ]}
+            imageStyle={styles.heroImage}
+            resizeMode="cover"
+          >
             <View style={styles.heroScrim} />
+
             <View style={styles.heroContent}>
               <Text style={styles.heroTitle}>{heroMovie.title}</Text>
+
               <View style={styles.heroMetaRow}>
                 <RatingBadge rating={heroMovie.rating} />
+
                 <View style={styles.ageBadge}>
                   <Text style={styles.ageBadgeText}>{heroMovie.ageRating}</Text>
                 </View>
+
                 <Text style={styles.heroMetaText}>
-                  {heroMovie.year}  {heroMovie.duration}  {heroMovie.genre}
+                  {heroMovie.year} {heroMovie.duration} {heroMovie.genre}
                 </Text>
               </View>
+
               <AppButton
                 label="Watch Now"
                 style={styles.watchNowButton}
                 onPress={() => router.push(`/movie/${heroMovie.id}`)}
               />
             </View>
-          </View>
+          </ImageBackground>
+
           <View style={styles.dotsRow}>
             {[0, 1, 2, 3].map((i) => (
               <View key={i} style={[styles.dot, i === 0 && styles.dotActive]} />
@@ -71,11 +88,15 @@ export default function HomeScreen() {
         </Pressable>
 
         <View style={styles.section}>
-          <SectionHeader title="Now Playing" subtitle="Playing in theaters now" />
+          <SectionHeader
+            title="Now Playing"
+            subtitle="Playing in theaters now"
+          />
           <ScrollView
             horizontal
             showsHorizontalScrollIndicator={false}
-            contentContainerStyle={styles.rowContent}>
+            contentContainerStyle={styles.rowContent}
+          >
             {nowPlaying.map((movie) => (
               <PosterCard
                 key={movie.id}
@@ -88,7 +109,10 @@ export default function HomeScreen() {
         </View>
 
         <View style={styles.section}>
-          <SectionHeader title="Coming Soon This Year" subtitle="Movies on their way to the big screen" />
+          <SectionHeader
+            title="Coming Soon This Year"
+            subtitle="Movies on their way to the big screen"
+          />
 
           <View style={styles.filterRow}>
             <View style={styles.yearPill}>
@@ -103,7 +127,8 @@ export default function HomeScreen() {
                       style={[
                         styles.monthText,
                         activeMonth === month && styles.monthTextActive,
-                      ]}>
+                      ]}
+                    >
                       {month}
                     </Text>
                   </Pressable>
@@ -115,7 +140,8 @@ export default function HomeScreen() {
           <ScrollView
             horizontal
             showsHorizontalScrollIndicator={false}
-            contentContainerStyle={styles.rowContent}>
+            contentContainerStyle={styles.rowContent}
+          >
             {comingSoon.map((movie) => (
               <PosterCard
                 key={movie.id}
@@ -140,16 +166,16 @@ const styles = StyleSheet.create({
     paddingBottom: Spacing.xxl,
   },
   header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
     paddingHorizontal: Spacing.lg,
     paddingVertical: Spacing.md,
   },
   logo: {
     color: Colors.text,
     fontSize: FontSize.xl,
-    fontWeight: '800',
+    fontWeight: "800",
   },
   logoAccent: {
     color: Colors.primary,
@@ -160,17 +186,21 @@ const styles = StyleSheet.create({
   heroPoster: {
     height: 480,
     borderRadius: Radius.xl,
-    overflow: 'hidden',
-    justifyContent: 'flex-end',
+    overflow: "hidden",
+    justifyContent: "flex-end",
+  },
+
+  heroImage: {
+    borderRadius: Radius.xl,
   },
   heroPlaceholderIcon: {
-    position: 'absolute',
-    top: '35%',
-    alignSelf: 'center',
+    position: "absolute",
+    top: "35%",
+    alignSelf: "center",
   },
   heroScrim: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'rgba(0,0,0,0.35)',
+    backgroundColor: "rgba(0,0,0,0.35)",
   },
   heroContent: {
     padding: Spacing.lg,
@@ -178,14 +208,14 @@ const styles = StyleSheet.create({
   heroTitle: {
     color: Colors.text,
     fontSize: FontSize.xxl,
-    fontWeight: '700',
+    fontWeight: "700",
   },
   heroMetaRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     gap: Spacing.sm,
     marginTop: Spacing.sm,
-    flexWrap: 'wrap',
+    flexWrap: "wrap",
   },
   ageBadge: {
     borderWidth: 1,
@@ -193,13 +223,13 @@ const styles = StyleSheet.create({
     borderRadius: Radius.pill,
     width: 22,
     height: 22,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   ageBadgeText: {
     color: Colors.white,
     fontSize: 9,
-    fontWeight: '700',
+    fontWeight: "700",
   },
   heroMetaText: {
     color: Colors.text,
@@ -207,13 +237,13 @@ const styles = StyleSheet.create({
   },
   watchNowButton: {
     marginTop: Spacing.md,
-    alignSelf: 'flex-start',
+    alignSelf: "flex-start",
     paddingHorizontal: Spacing.xl,
     height: 44,
   },
   dotsRow: {
-    flexDirection: 'row',
-    justifyContent: 'center',
+    flexDirection: "row",
+    justifyContent: "center",
     gap: 6,
     marginTop: Spacing.md,
   },
@@ -236,14 +266,14 @@ const styles = StyleSheet.create({
     paddingRight: Spacing.lg,
   },
   filterRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     gap: Spacing.md,
     marginBottom: Spacing.md,
   },
   yearPill: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     gap: 4,
     backgroundColor: Colors.white,
     borderRadius: Radius.pill,
@@ -251,12 +281,12 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
   },
   yearPillText: {
-    color: '#141416',
+    color: "#141416",
     fontSize: FontSize.xs,
-    fontWeight: '700',
+    fontWeight: "700",
   },
   monthsRow: {
-    flexDirection: 'row',
+    flexDirection: "row",
     gap: Spacing.md,
     paddingRight: Spacing.lg,
   },
@@ -266,8 +296,8 @@ const styles = StyleSheet.create({
   },
   monthTextActive: {
     color: Colors.text,
-    fontWeight: '700',
-    textDecorationLine: 'underline',
+    fontWeight: "700",
+    textDecorationLine: "underline",
     textDecorationColor: Colors.primary,
   },
 });

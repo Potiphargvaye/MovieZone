@@ -47,7 +47,7 @@ export const movies: Movie[] = [
     ticketPrice: 50.0,
     placeholderColor: "#C9963B",
     poster: require("@/assets/images/image7.png"),
-    backdrop: require("@/assets/images/image7.png"),
+    backdrop: require("@/assets/images/image8.png"),
     showtimes: [
       { time: "11:15", seatsAvailable: 4 },
       { time: "14:15", seatsAvailable: 10 },
